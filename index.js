@@ -6,7 +6,7 @@ const shuff = config => {
 
   const back = {
     clean: () => {
-      client.del('shuff');
+      client.del(config.prefix || 'shuff');
     },
     add: list => {
       const args = [];
@@ -20,7 +20,7 @@ const shuff = config => {
         .reduce((a, b) => a.concat(b));
 
       return new Promise((resolve, reject) => {
-        client.zadd(['shuff'].concat(list), (err, response) => {
+        client.zadd([config.prefix || 'shuff'].concat(list), (err, response) => {
           if (err) reject(err);
 
           resolve(response);
@@ -28,11 +28,11 @@ const shuff = config => {
       });
     },
     generate: limit => {
-      const args = ['shuff', '+inf', '-inf', 'LIMIT', 0, limit];
+      const args = [config.prefix || 'shuff', '+inf', '-inf', 'LIMIT', 0, limit];
 
       return new Promise((resolve, reject) => {
         new Promise((res, rej) => {
-          client.zrange(['shuff', 0, -1], (err, list) => {
+          client.zrange([config.prefix || 'shuff', 0, -1], (err, list) => {
             list = r.shuffle(list, Math.floor(list.length / 10));
 
             const promises = [];
@@ -40,10 +40,10 @@ const shuff = config => {
             list.map(l => {
               promises.push(
                 new Promise((resolve, reject) => {
-                  client.zrem(['shuff', l], (err, data) => {
+                  client.zrem([config.prefix || 'shuff', l], (err, data) => {
                     if (err) reject();
 
-                    client.zadd(['shuff', rand(), l], (err, data) => {
+                    client.zadd([config.prefix || 'shuff', rand(), l], (err, data) => {
                       if (err) reject();
 
                       resolve();
