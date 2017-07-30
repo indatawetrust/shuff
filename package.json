@@ -1,0 +1,15 @@
+{
+  "name": "shuff",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava",
+    "benchmark": "node benchmark"
+  },
+  "author": "indatawetrust",
+  "license": "MIT",
+  "devDependencies": {
+    "redis": "^2.7.1"
+  }
+}
