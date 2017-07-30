@@ -13,6 +13,7 @@
     "ava": "^0.21.0"
   },
   "dependencies": {
+    "randa": "0.0.3",
     "redis": "^2.7.1"
   }
 }
