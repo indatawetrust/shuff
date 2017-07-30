@@ -10,7 +10,9 @@
   "author": "indatawetrust",
   "license": "MIT",
   "devDependencies": {
-    "ava": "^0.21.0",
+    "ava": "^0.21.0"
+  },
+  "dependencies": {
     "redis": "^2.7.1"
   }
 }
