@@ -1,4 +1,4 @@
-let shuff = require('./index')({});
+let shuff = require('./index')({ blow: 100 });
 
 shuff.clean()
 

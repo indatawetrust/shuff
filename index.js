@@ -33,7 +33,7 @@ const shuff = config => {
       return new Promise((resolve, reject) => {
         new Promise((res, rej) => {
           client.zrange([config.prefix || 'shuff', 0, -1], (err, list) => {
-            list = r.shuffle(list, Math.floor(list.length / 10));
+            list = r.shuffle(list, Math.floor(list.length / (config.blow || 10)));
 
             const promises = [];
 
