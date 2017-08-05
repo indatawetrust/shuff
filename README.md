@@ -6,6 +6,7 @@ Status](https://img.shields.io/travis/indatawetrust/shuff.svg)](https://travis-c
 ```js
 let shuff = require('shuff')({
   // redis client configuration
+  blow: 10
 });
 
 shuff.add("Greene")
