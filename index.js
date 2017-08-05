@@ -27,6 +27,15 @@ const shuff = config => {
         });
       });
     },
+    remove: val => {
+      return new Promise((resolve, reject) => {
+        client.zrem([config.prefix || 'shuff', val], (err, data) => {
+          if (err) reject();
+
+          resolve();
+        });
+      })
+    },
     generate: limit => {
       const args = [config.prefix || 'shuff', '+inf', '-inf', 'LIMIT', 0, limit];
 
