@@ -27,14 +27,22 @@ const shuff = config => {
         });
       });
     },
-    remove: val => {
-      return new Promise((resolve, reject) => {
-        client.zrem([config.prefix || 'shuff', val], (err, data) => {
-          if (err) reject();
+    remove: list => {
+      const promises = [];
 
-          resolve();
-        });
+      list = Array.isArray(list) ? list : [list];
+
+      list.map(val => {
+        promises.push(new Promise((resolve, reject) => {
+          client.zrem([config.prefix || 'shuff', val], (err, data) => {
+            if (err) reject();
+
+            resolve();
+          });
+        }));
       })
+
+      return Promise.all(promises)
     },
     generate: limit => {
       const args = [config.prefix || 'shuff', '+inf', '-inf', 'LIMIT', 0, limit];
