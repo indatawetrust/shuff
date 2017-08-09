@@ -1,7 +1,7 @@
 {
   "name": "shuff",
-  "version": "0.0.5",
-  "description": "",
+  "version": "0.0.6",
+  "description": "Random array generation with redis",
   "main": "index.js",
   "scripts": {
     "test": "ava",
