@@ -53,9 +53,17 @@ shuff.generate(5).then(console.log)
 // sample log
 [
   "Miller",
-  "Glover",
+  "Whitaker",
   "Kidd",
   "Olsen",
   "Mcclain"
+]
+
+// ignore
+shuff.generate(2, ["Rosa", "Lewis"]).then(console.log)
+// sample log
+[
+  "Chan",
+  "Obrien"
 ]
 ```
